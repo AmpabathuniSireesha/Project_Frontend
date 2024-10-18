@@ -4,26 +4,26 @@ const tablePageStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'flex-start', // Aligns the content to the top
+  justifyContent: 'flex-start', 
   color: 'black',
-  fontSize: 'large',
+  fontSize: 'small',
   padding: '20px',
   width: '100vw',
-  height: '100vh', // Full height to center vertically
-  overflow: 'hidden', // Remove scrolling option
+  height: '100vh', 
+  overflow: 'hidden',
   boxSizing: 'border-box',
-  backgroundImage: 'url("https://www.hdwallpapers.in/download/green_leaves_in_blur_green_background_hd_nature-HD.jpg")', // Replace with your image URL
-  backgroundSize: 'cover', // Ensure background covers the whole screen
+  backgroundImage: 'url("https://cdn.pixabay.com/photo/2018/08/31/18/21/fantasy-3645269_1280.jpg")', 
+  backgroundSize: 'cover', 
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
 };
 
 const tableStyle = {
-  width: '100%',
+  width: '80%', 
   borderCollapse: 'collapse',
-  marginTop: 0, // Remove margin top
-  marginBottom: '20px', // Add margin bottom for spacing
-  backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background for the table
+  marginTop: 0, 
+  marginBottom: '20px', 
+  backgroundColor: 'rgba(255, 255, 255, 0.8)', 
 };
 
 const thStyle = {
@@ -41,7 +41,7 @@ const tdStyle = {
 function TablePage({ formData }) {
   return (
     <div style={tablePageStyle}>
-      <h1 style={{ marginTop: '0px', paddingTop: '0px' }}>Employee Details</h1> {/* Ensure no margin/padding */}
+      <h1 style={{ marginTop: '0px', paddingTop: '0px' }}>Employee Details</h1>
       <table style={tableStyle}>
         <thead>
           <tr>

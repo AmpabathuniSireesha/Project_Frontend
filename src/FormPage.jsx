@@ -10,27 +10,27 @@ const formPageStyle = {
   padding: '20px',
   width: '100vw',
   height: '100vh',
-  backgroundImage: 'url("https://www.hdwallpapers.in/download/green_leaves_in_blur_green_background_hd_nature-HD.jpg")', // Replace with your image URL
-  backgroundSize: 'cover', // Ensure background covers the whole screen
+  backgroundImage: 'url("https://cdn.pixabay.com/photo/2018/08/31/18/21/fantasy-3645269_1280.jpg")',
+  backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed', // Fixed background during scroll
+  backgroundAttachment: 'fixed',
   overflow: 'hidden',
   boxSizing: 'border-box',
 };
 
-const formContainerStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent white for better contrast
-  border: '1px solid rgba(255, 255, 255, 0.7)', // Light border for visibility
-  borderRadius: '8px', // Rounded corners
-  padding: '20px', // Padding inside the box
-  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)', // Subtle shadow for depth
+const containerStyle = {
+  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent background
+  border: '1px solid rgba(255, 255, 255, 0.7)',
+  borderRadius: '8px',
+  padding: '20px',
+  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 };
 
 const formStyle = {
   display: 'flex',
   flexDirection: 'column',
-  width: '400px', // Set a fixed width for better alignment
+  width: '400px',
 };
 
 const inputContainerStyle = {
@@ -45,16 +45,16 @@ const labelStyle = {
   fontWeight: 'bold',
   fontSize: '14px',
   color: '#333',
-  width: '100px', // Set a fixed width for labels
+  width: '100px',
 };
 
 const inputStyle = {
   padding: '10px',
-  width: '300px', // Increased width for input fields
+  width: '300px',
   fontSize: '14px',
   border: '1px solid #ccc',
   borderRadius: '4px',
-  flex: 1, // Take the remaining space
+  flex: 1,
 };
 
 const buttonStyle = {
@@ -75,14 +75,27 @@ function FormPage({ onSubmitForm }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if any field is empty
+    if (!name || !id || !phone || !gender) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Check if phone number is exactly 10 digits
+    if (phone.length !== 10) {
+      alert("Phone number must be exactly 10 digits.");
+      return;
+    }
+
     const formData = { name, id, phone, gender };
     onSubmitForm(formData);
   };
 
   return (
     <div style={formPageStyle}>
-      <h1>Employee Form</h1>
-      <div style={formContainerStyle}>
+      <div style={containerStyle}>
+        <h1>Employee Form</h1>
         <form style={formStyle} onSubmit={handleSubmit}>
           <div style={inputContainerStyle}>
             <label style={labelStyle}>Name:</label>
@@ -108,7 +121,8 @@ function FormPage({ onSubmitForm }) {
             <label style={labelStyle}>Phone:</label>
             <input
               style={inputStyle}
-              type="number"
+              type="tel" 
+              pattern="[0-9]{10}"
               placeholder="Enter your phone number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -122,8 +136,8 @@ function FormPage({ onSubmitForm }) {
                   type="radio"
                   name="gender"
                   value="Female"
-                  checked={gender === 'Female'}
-                  onChange={( e) => setGender(e.target.value)}
+ checked={gender === 'Female'}
+                  onChange={(e) => setGender(e.target.value)}
                 /> Female
               </label>
               <label>

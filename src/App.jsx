@@ -15,7 +15,7 @@ function App() {
   const [formData, setFormData] = useState(null);
 
   const handleLogin = (username, password) => {
-    if (username === 'user' && password === 'password') {
+    if (username === 'Sireesha' && password === 'siri@123') {
       setIsLoggedIn(true);
       setLoginError(false);
     } else {

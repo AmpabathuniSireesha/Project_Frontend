@@ -4,19 +4,26 @@ const loginPageStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'center', // Center vertically and horizontally
+  justifyContent: 'center', 
   padding: '20px',
   width: '100vw',
-  height: '100vh', // Full viewport height
-  backgroundImage: 'url("https://www.hdwallpapers.in/download/green_leaves_in_blur_green_background_hd_nature-HD.jpg")',
-  backgroundSize: 'cover', // Ensure background covers the whole screen
+  height: '100vh', 
+  backgroundImage: 'url("https://cdn.pixabay.com/photo/2018/08/31/18/21/fantasy-3645269_1280.jpg")',
+  backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'fixed', // Fixed background during scroll
-  color: '#fff', // Light font color for contrast
-  textShadow: '0px 2px 4px rgba(0, 0, 0, 0.6)', // Text shadow for better readability
-  overflow: 'hidden', // Prevent scrolling
-  boxSizing: 'border-box', // Ensures content fits within the box
+  backgroundAttachment: 'fixed', 
+  color: '#fff', 
+  textShadow: '0px 2px 4px rgba(0, 0, 0, 0.6)', 
+  overflow: 'hidden',
+  boxSizing: 'border-box', 
+};
+
+const containerStyle = {
+  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent background
+  padding: '20px',
+  borderRadius: '10px',
+  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
 };
 
 const inputStyle = {
@@ -24,9 +31,9 @@ const inputStyle = {
   padding: '12px',
   width: '260px',
   fontSize: '16px',
-  border: '1px solid #fff', // Light border
+  border: '1px solid #fff', 
   borderRadius: '8px',
-  backgroundColor: 'rgba(255, 255, 255, 0.8)', // Transparent white background
+  backgroundColor: 'rgba(255, 255, 255, 0.8)', 
   color: '#333',
 };
 
@@ -38,13 +45,13 @@ const buttonStyle = {
   border: 'none',
   borderRadius: '8px',
   cursor: 'pointer',
-  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)', // Slight shadow for depth
-  transition: 'background-color 0.3s, transform 0.2s', // Smooth transition effects
+  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)', 
+  transition: 'background-color 0.3s, transform 0.2s', 
 };
 
 const buttonHoverStyle = {
   backgroundColor: 'green',
-  transform: 'scale(1.05)', // Slight zoom on hover
+  transform: 'scale(1.05)', 
 };
 
 const headingStyle = {
@@ -52,12 +59,12 @@ const headingStyle = {
   marginBottom: '20px',
   fontSize: '32px',
   fontWeight: 'bold',
-  textShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)', // Text shadow for readability
+  textShadow: '0px 2px 4px rgba(0, 0, 0, 0.5)', 
 };
 
 const passwordContainerStyle = {
   position: 'relative',
-  width: '260px', // Match the width of the input
+  width: '260px', 
 };
 
 const eyeIconStyle = {
@@ -66,7 +73,7 @@ const eyeIconStyle = {
   top: '50%',
   transform: 'translateY(-50%)',
   cursor: 'pointer',
-  color: '#333', // Dark color for the icon
+  color: '#333', 
 };
 
 function LoginPage({ onLogin }) {
@@ -85,44 +92,46 @@ function LoginPage({ onLogin }) {
 
   return (
     <div style={loginPageStyle}>
-      <h1 style={headingStyle}>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          style={inputStyle}
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <div style={passwordContainerStyle}>
+      <div style={containerStyle}>
+        <h1 style={headingStyle}>Login</h1>
+        <form onSubmit={handleSubmit}>
           <input
             style={inputStyle}
-            type={isPasswordVisible ? 'text' : 'password'}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-          <span 
-            style={eyeIconStyle} 
-            onClick={togglePasswordVisibility}
-            title={isPasswordVisible ? 'Hide password' : 'Show password'}
+          <br />
+          <div style={passwordContainerStyle}>
+            <input
+              style={inputStyle}
+              type={isPasswordVisible ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span 
+              style={eyeIconStyle} 
+              onClick={togglePasswordVisibility}
+              title={isPasswordVisible ? 'Hide password' : 'Show password'}
+            >
+              {isPasswordVisible ? '👁️' : '👁️‍🗨️'} 
+            </span>
+          </div>
+          <br />
+          <button
+            style={buttonStyle}
+            type="submit"
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor}
+            onMouseDown={(e) => e.currentTarget.style.transform = buttonHoverStyle.transform}
+            onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
-            {isPasswordVisible ? '👁️' : '👁️‍🗨️'} {/* Eye icon for visibility toggle */}
-          </span>
-        </div>
-        <br />
-        <button
-          style={buttonStyle}
-          type="submit"
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor}
-          onMouseDown={(e) => e.currentTarget.style.transform = buttonHoverStyle.transform}
-          onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
-        >
-          Submit
-        </button>
-      </form>
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

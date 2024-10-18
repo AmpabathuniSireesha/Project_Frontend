@@ -4,17 +4,25 @@ const errorPageStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'flex-start',
-  color:'red',
+  justifyContent: 'center', // Centering the content vertically
+  color: 'red',
   fontSize: 'large',
   padding: '20px',
   width: '100vw',
-  height: '100vh', // Full height to center vertically
-  // backgroundColor: '#f7f7f7', // Light background for better contrast
-  overflow: 'hidden', // Remove scrolling option
+  height: '100vh',
+  overflow: 'hidden',
   boxSizing: 'border-box',
-  backgroundColor: '#fdecea',
-  // boxShadow: '2px 2px 12px rgba(0,0,0,0.1)',
+  backgroundImage: 'url("https://cdn.pixabay.com/photo/2018/08/31/18/21/fantasy-3645269_1280.jpg")', // Background image
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+};
+
+const containerStyle = {
+  backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
+  borderRadius: '8px',
+  padding: '20px',
+  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 };
 
 const inputStyle = {
@@ -22,7 +30,7 @@ const inputStyle = {
   padding: '10px',
   width: '250px',
   fontSize: '14px',
-  border: '1px solid #ccc', // Add border for better visibility
+  border: '1px solid #ccc',
   borderRadius: '4px',
 };
 
@@ -46,28 +54,30 @@ function ErrorPage({ onLogin }) {
 
   return (
     <div style={errorPageStyle}>
-      <h1>Login Failed</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          style={inputStyle}
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <input
-          style={inputStyle}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button style={buttonStyle} type="submit">
-          Try Again
-        </button>
-      </form>
+      <div style={containerStyle}>
+        <h1>Login Failed</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            style={inputStyle}
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <br />
+          <input
+            style={inputStyle}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button style={buttonStyle} type="submit">
+            Try Again
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
