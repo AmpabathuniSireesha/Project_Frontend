@@ -108,7 +108,7 @@ function FormPage({ onSubmitForm }) {
             <label style={labelStyle}>Phone:</label>
             <input
               style={inputStyle}
-              type="text"
+              type="number"
               placeholder="Enter your phone number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
