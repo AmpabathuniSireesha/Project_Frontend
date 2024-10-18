@@ -20,7 +20,7 @@ const formPageStyle = {
 };
 
 const containerStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent background
+  backgroundColor: 'rgba(255, 255, 255, 0.5)',
   border: '1px solid rgba(255, 255, 255, 0.7)',
   borderRadius: '8px',
   padding: '20px',
@@ -76,13 +76,12 @@ function FormPage({ onSubmitForm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if any field is empty
+  
     if (!name || !id || !phone || !gender) {
       alert("Please fill in all fields.");
       return;
     }
 
-    // Check if phone number is exactly 10 digits
     if (phone.length !== 10) {
       alert("Phone number must be exactly 10 digits.");
       return;

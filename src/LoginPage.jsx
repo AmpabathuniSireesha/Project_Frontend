@@ -20,7 +20,7 @@ const loginPageStyle = {
 };
 
 const containerStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.5)', // Semi-transparent background
+  backgroundColor: 'rgba(255, 255, 255, 0.5)', 
   padding: '20px',
   borderRadius: '10px',
   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
